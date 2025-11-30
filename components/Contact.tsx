@@ -73,10 +73,10 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center">
-            <span className="gradient-text">Let's Connect</span>
+            <span className="gradient-text">Let&apos;s Connect</span>
           </h2>
           <p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of
             your vision.
           </p>
         </motion.div>
@@ -226,4 +226,3 @@ export default function Contact() {
     </section>
   );
 }
-
