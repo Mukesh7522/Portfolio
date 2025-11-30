@@ -77,7 +77,7 @@ Portfolio/
     └── workflows/
         └── deploy.yml      # GitHub Actions deployment workflow
 ```
-
+ 
 ## 🚢 Deployment to GitHub Pages
 
 This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
@@ -217,4 +217,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **Note**: Make sure to replace placeholder content with your actual information before deploying.
+
+
 
