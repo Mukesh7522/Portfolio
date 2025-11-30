@@ -35,7 +35,6 @@ const achievements = [
 
 const CounterAnimation = ({
   value,
-  prefix = '',
   suffix = '',
   isInView,
   duration = 2,
@@ -89,7 +88,6 @@ const CounterAnimation = ({
 
   return (
     <span>
-      {prefix}
       {formatValue(count)}
       {suffix}
     </span>
@@ -133,7 +131,6 @@ export default function Achievements() {
                 <div className="text-4xl md:text-5xl font-bold gradient-text mb-2 h-16 flex items-center justify-center">
                   <CounterAnimation
                     value={achievement.value}
-                    prefix={achievement.prefix || ''}
                     suffix={achievement.suffix}
                     isInView={isInView}
                   />
