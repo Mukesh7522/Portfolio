@@ -147,7 +147,9 @@ export default function Contact() {
             {/* Download Resume Button */}
             <motion.a
               href="/resume.pdf"
-              download
+              download="Mukesh_Sridharan_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.8, duration: 0.6 }}
