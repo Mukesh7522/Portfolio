@@ -146,7 +146,7 @@ export default function Contact() {
 
             {/* Download Resume Button */}
             <motion.a
-              href="/resume.pdf"
+              href="https://mukesh7522.github.io/Portfolio/resume.pdf"
               download="Mukesh_Sridharan_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
