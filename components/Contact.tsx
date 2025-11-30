@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { HiDownload } from 'react-icons/hi';
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
-
+ 
 const contactInfo = [
   {
     icon: MdEmail,
