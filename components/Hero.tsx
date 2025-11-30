@@ -173,7 +173,9 @@ export default function Hero() {
 
             <motion.a
               href="/resume.pdf"
-              download
+              download="Mukesh_Sridharan_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3 glass rounded-lg font-semibold text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -239,4 +241,3 @@ export default function Hero() {
     </section>
   );
 }
-
