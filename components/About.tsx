@@ -58,15 +58,14 @@ export default function About() {
             className="space-y-6 text-lg text-gray-300 leading-relaxed"
           >
             <p>
-              Data Automation Specialist focused on converting complex, repetitive operations into
-              intelligent, self-running automation ecosystems. I engineer Python–PostgreSQL data
-              pipelines that process massive datasets with near-zero failures, incorporating
-              monitoring, validation, and auto-correction to prevent downstream errors.
+              Analytics Engineer with hands-on experience designing automated ETL pipelines and building
+              scalable self-service analytics platforms. I've engineered production-grade data modeling,
+              BI systems, and SQL-driven analytics trusted by leadership and decision-makers.
             </p>
             <p>
-              I develop high-impact Power BI dashboards that power instant decision-making for large
-              user bases, transforming raw data into actionable insights that drive business growth
-              and operational efficiency.
+              Delivered significant cost savings and eliminated annual licensing expenses by
+              automating workflows using Python and SQL, while building 40+ success-critical
+              performance dashboards that reduced analytics support requests by ~60%.
             </p>
             <p className="text-gray-400">
               <span className="font-semibold text-white">Location:</span> Tirupur, Tamil Nadu, India

@@ -7,13 +7,13 @@ import { HiAcademicCap, HiBadgeCheck } from 'react-icons/hi';
 
 const education = [
   {
-    degree: 'Data Analytics',
+    degree: 'Professional Certificate in Data Analytics',
     institution: 'ExcelR Institute',
     location: 'Bengaluru',
     duration: '08/2023 – 04/2024',
   },
   {
-    degree: 'BSc Computer Systems & Design',
+    degree: 'Bsc Computer Systems & Design',
     institution: 'PSG College of Technology',
     location: 'Coimbatore',
     duration: '06/2018 – 05/2021',
