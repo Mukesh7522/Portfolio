@@ -56,14 +56,15 @@ const projects = [
     isPublic: false,
   },
   {
-    title: 'Distro Forge - RLS-Powered Data Platform',
+    title: 'Distro Forge - Sales Analytics Platform',
     description:
-      'Custom self-service data portal replacing legacy BI solution, eliminating ₹12 lakh in annual licensing costs',
-    tech: ['Python', 'PostgreSQL', 'HTML', 'CSS', 'JavaScript', 'Odoo', 'ChannelKonnect'],
+      'Custom self-service portal for primary and secondary sales analytics, replacing legacy BI tools and saving ₹12L in annual licensing costs',
+    tech: ['Python', 'PostgreSQL', 'FastAPI', 'React', 'Odoo', 'ChannelKonnect'],
     features: [
-      'Consolidated 30M+ records from B2B (Odoo) and D2C (13+ marketplaces) into unified PostgreSQL',
-      'Built FastAPI + React portal eliminating ₹12 lakh in annual licensing costs',
-      'Enterprise-grade Row-Level Security (RLS) with automated Python ETL orchestration',
+      'Consolidated primary and secondary sales data through automated ETL pipelines from Odoo and ChannelKonnect',
+      'Engineered self-service dashboards for sales performance tracking and distributor monitoring',
+      'Eliminated ₹12 lakh in annual Power BI licensing costs through custom self-hosted infrastructure',
+      'Implemented enterprise-grade Row-Level Security (RLS) for personalized data access',
     ],
     company: 'Technosport',
     isPublic: false,

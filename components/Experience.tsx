@@ -23,9 +23,9 @@ const experiences = [
           'Built and maintained automated Python pipelines ingesting D2C marketplace data via refresh token authentication (Dropbox API), reliably processing 200+ files per ingestion cycle orchestrated with Apache Airflow and Docker.',
       },
       {
-        heading: 'Full-Stack Analytics Platform (₹12L+ Savings)',
+        heading: 'Internal Analytics Platform Development',
         description:
-          'Engineered a FastAPI + React internal analytics portal delivering 5 dashboards (B2B vs D2C, Inventory, Catalog), replacing legacy BI tooling and eliminating annual licensing costs through self-hosted infrastructure.',
+          'Engineered a FastAPI + React analytics portal delivering 5 executive dashboards (B2B vs D2C, Inventory, Product Catalog), providing real-time operational visibility across isolated schemas.',
       },
     ],
     side: 'left',
