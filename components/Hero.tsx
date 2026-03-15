@@ -133,7 +133,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Analytics Engineer | Data Analyst
+              Analytics Engineer | Data Engineer & Analyst
             </motion.h2>
 
             <motion.p
@@ -142,7 +142,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Data Automation Specialist | Building Intelligent Data Ecosystems
+              Data Engineering & Orchestration Specialist | Building Production-Grade Pipelines
             </motion.p>
 
             <motion.p
@@ -151,7 +151,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              Converting complex operations into self-running automation systems with Python, SQL, and Power BI
+              Architecting unified data warehouses and self-service analytics platforms delivering significant annual cost savings.
             </motion.p>
           </motion.div>
 

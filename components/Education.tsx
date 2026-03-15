@@ -33,6 +33,10 @@ const certifications = [
     name: 'Oracle Cloud Infrastructure 2025 Data Science Professional',
     url: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=F3EDA8B5E0979F8BD157C05D73E86D0CF4C7420A255830F31ED9B08E9ABE867',
   },
+  {
+    name: 'Linux Command Line Fundamentals',
+    url: 'https://www.udemy.com/certificate/UC-8c863bfa-605c-42d8-92d2-e5b13be02c45/',
+  },
 ];
 
 export default function Education() {

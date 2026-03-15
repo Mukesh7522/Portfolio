@@ -13,14 +13,19 @@ const experiences = [
     duration: '07/2024 – Present',
     achievements: [
       {
-        heading: 'Architected End-to-End Reporting Pipeline',
+        heading: 'Architected Unified PostgreSQL Data Warehouse',
         description:
-          'Built production data workflow extracting 100K+ monthly transactional records from Odoo ERP, transforming raw data using Python/Pandas in Jupyter, and delivering 15+ executive dashboards in Power BI that reduced decision-making cycles by 50% through real-time operational visibility.',
+          'Designed and owned end-to-end a production warehouse consolidating B2B (Odoo ERP) and D2C (Amazon, Myntra, 13+ platforms) data totaling 30M+ raw records, implementing a raw → clean materialized view architecture across isolated schemas.',
       },
       {
-        heading: 'Eliminated 30+ Hours/Week Through Intelligent Automation',
+        heading: 'Automated Multi-Source ETL Ecosystem',
         description:
-          'Identified critical bottlenecks in manual reporting processes and deployed 10+ Python automation scripts with Task Scheduler orchestration, achieving 75% time reduction and 99.5% data accuracy while enabling team to focus on strategic analysis over repetitive tasks.',
+          'Built and maintained automated Python pipelines ingesting D2C marketplace data via refresh token authentication (Dropbox API), reliably processing 200+ files per ingestion cycle orchestrated with Apache Airflow and Docker.',
+      },
+      {
+        heading: 'Full-Stack Analytics Platform (₹12L+ Savings)',
+        description:
+          'Engineered a FastAPI + React internal analytics portal delivering 5 dashboards (B2B vs D2C, Inventory, Catalog), replacing legacy BI tooling and eliminating annual licensing costs through self-hosted infrastructure.',
       },
     ],
     side: 'left',

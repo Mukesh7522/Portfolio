@@ -26,8 +26,8 @@ const stats = [
   },
   {
     icon: HiLightningBolt,
-    value: '50%',
-    label: 'Faster Decision Making',
+    value: '₹12L+',
+    label: 'Annual Cost Savings',
     color: 'from-primary-400 to-secondary-400',
   },
 ];
@@ -58,14 +58,14 @@ export default function About() {
             className="space-y-6 text-lg text-gray-300 leading-relaxed"
           >
             <p>
-              Analytics Engineer with hands-on experience designing automated ETL pipelines and building
-              scalable self-service analytics platforms. I've engineered production-grade data modeling,
-              BI systems, and SQL-driven analytics trusted by leadership and decision-makers.
+              Analytics Engineer with strong data engineering experience building production-grade data
+              pipelines, multi-source ETL systems, and full-stack analytics platforms. I've architected
+              unified PostgreSQL data warehouses consolidating 30M+ records across multiple channels.
             </p>
             <p>
-              Delivered significant cost savings and eliminated annual licensing expenses by
-              automating workflows using Python and SQL, while building 40+ success-critical
-              performance dashboards that reduced analytics support requests by ~60%.
+              Delivered ₹12L+ in annual cost savings by replacing legacy BI tooling with custom
+              self-service analytics platforms, while building 40+ success-critical performance
+              dashboards that reduced analytics support requests by ~60%.
             </p>
             <p className="text-gray-400">
               <span className="font-semibold text-white">Location:</span> Tirupur, Tamil Nadu, India
