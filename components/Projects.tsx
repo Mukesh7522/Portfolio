@@ -53,7 +53,6 @@ const projects = [
     title:       'Fashion Expo — Mobile Order System',
     accent:      '#f472b6',
     badge:       'CONFIDENTIAL' as const,
-    company:     'Technosport',
     description: 'Full-stack mobile ordering platform built in 5 days, handling 300+ orders across 10+ staff.',
     tech:        ['Flask', 'Python', 'HTML', 'CSS', 'JavaScript', 'Excel', 'Dropbox'],
     features:    [
