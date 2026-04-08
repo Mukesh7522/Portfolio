@@ -1,179 +1,135 @@
-'use client';
+'use client'
 
-import { useInView } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import {
-  HiDatabase,
-  HiClock,
-  HiCheckCircle,
-} from 'react-icons/hi';
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { HiDatabase, HiLightningBolt, HiChartBar, HiClock } from 'react-icons/hi'
 
-const achievements = [
-  {
-    icon: HiDatabase,
-    value: 100000,
-    suffix: '+',
-    label: 'Monthly Records Processed',
-    color: 'from-blue-500 to-cyan-500',
-  },
-  {
-    icon: HiClock,
-    value: 75,
-    suffix: '%',
-    label: 'Time Reduction',
-    color: 'from-purple-500 to-pink-500',
-  },
-  {
-    icon: HiCheckCircle,
-    value: 99.5,
-    suffix: '%',
-    label: 'Data Accuracy',
-    color: 'from-teal-500 to-green-500',
-  },
-];
-
-const CounterAnimation = ({
-  value,
-  suffix = '',
-  isInView,
-  duration = 2,
+/* ─── Counter Animation (preserved logic) ───────────────────── */
+function CounterAnimation({
+  value, suffix = '', prefix = '', isInView, duration = 2,
 }: {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  isInView: boolean;
-  duration?: number;
-}) => {
-  const [count, setCount] = useState(0);
+  value: number; suffix?: string; prefix?: string; isInView: boolean; duration?: number
+}) {
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    if (!isInView) return;
-
-    const step = value / (duration * 60); // 60fps
-    let current = 0;
-
+    if (!isInView) return
+    const step = value / (duration * 60)
+    let cur    = 0
     const timer = setInterval(() => {
-      current += step;
-      if (current >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        // For decimals, use toFixed(1), for integers use floor
-        if (value % 1 !== 0) {
-          setCount(parseFloat(current.toFixed(1)));
-        } else {
-          setCount(Math.floor(current));
-        }
-      }
-    }, 1000 / 60);
+      cur += step
+      if (cur >= value) { setCount(value); clearInterval(timer) }
+      else setCount(value % 1 !== 0 ? parseFloat(cur.toFixed(1)) : Math.floor(cur))
+    }, 1000 / 60)
+    return () => clearInterval(timer)
+  }, [isInView, value, duration])
 
-    return () => clearInterval(timer);
-  }, [isInView, value, duration]);
+  const fmt = (v: number) => {
+    if (v >= 1_000_000) return (v / 1_000_000).toFixed(0) + 'M'
+    if (v >= 1000)      return (v / 1000).toFixed(0) + 'K'
+    return v.toFixed(v % 1 === 0 ? 0 : 1)
+  }
 
-  const formatValue = (val: number) => {
-    // Handle 100K case
-    if (val >= 100000) {
-      const thousands = Math.floor(val / 1000);
-      return thousands.toString() + 'K';
-    }
-    // Handle other thousands
-    if (val >= 1000) {
-      const thousands = val / 1000;
-      return thousands.toFixed(thousands % 1 === 0 ? 0 : 1) + 'K';
-    }
-    // Handle decimals and integers
-    return val.toFixed(val % 1 === 0 ? 0 : 1);
-  };
+  return <>{prefix}{fmt(count)}{suffix}</>
+}
 
-  return (
-    <span>
-      {formatValue(count)}
-      {suffix}
-    </span>
-  );
-};
+const stats = [
+  { icon: HiDatabase,      value: 30_000_000, prefix: '',  suffix: '+',  label: 'Records Processed',   accent: '#38bdf8' },
+  { icon: HiLightningBolt, value: 12,         prefix: '₹', suffix: 'L',  label: 'Annual Cost Savings', accent: '#fbbf24' },
+  { icon: HiChartBar,      value: 60,         prefix: '',  suffix: '%',  label: 'Support Reduction',   accent: '#34d399' },
+  { icon: HiClock,         value: 85,         prefix: '',  suffix: '%',  label: 'Order Time Saved',    accent: '#818cf8' },
+]
+
+const highlights = [
+  'Eliminated ₹12L/year Power BI licensing via custom analytics platform',
+  'Processed 200+ files per ETL cycle via Dropbox API automation',
+  'Tracked 16,000+ live aircraft with 3-minute refresh pipeline',
+  'Fashion Expo order system deployed in 5 days for live expo event',
+]
 
 export default function Achievements() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const ref      = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="achievements" className="section-padding relative">
+    <section id="achievements" className="section-padding">
       <div className="container-custom">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-16 text-center">
-            <span className="gradient-text">Key Achievements</span>
-          </h2>
-        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {achievements.map((achievement, index) => {
-            const Icon = achievement.icon;
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 'clamp(32px,5vw,48px)',
+            color: '#f8fafc', marginBottom: 48 }}
+        >
+          Key Achievements
+        </motion.h2>
+
+        {/* Stat cards */}
+        <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+          {stats.map((s, i) => {
+            const Icon = s.icon
             return (
               <motion.div
-                key={achievement.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ delay: index * 0.1, duration: 0.5, type: 'spring' }}
-                className="glass-strong p-8 rounded-xl hover-lift text-center group"
+                key={s.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="card"
+                style={{ padding: '28px 20px', textAlign: 'center' }}
+                whileHover={{ y: -3 }}
               >
-                <div
-                  className={`inline-flex p-4 rounded-lg bg-gradient-to-br ${achievement.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <Icon className="w-8 h-8 text-white" />
+                <Icon style={{ color: s.accent, width: 24, height: 24, margin: '0 auto 12px' }} />
+                <div style={{
+                  fontFamily: 'JetBrains Mono, monospace', fontWeight: 500,
+                  fontSize:   32, lineHeight: 1, color: s.accent, marginBottom: 8,
+                }}>
+                  {isInView ? (
+                    <CounterAnimation value={s.value} suffix={s.suffix} prefix={s.prefix} isInView={isInView} />
+                  ) : `${s.prefix}0${s.suffix}`}
                 </div>
-                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2 h-16 flex items-center justify-center">
-                  <CounterAnimation
-                    value={achievement.value}
-                    suffix={achievement.suffix}
-                    isInView={isInView}
-                  />
-                </div>
-                <p className="text-gray-400 text-sm">{achievement.label}</p>
+                <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 12, color: '#475569' }}>
+                  {s.label}
+                </p>
               </motion.div>
-            );
+            )
           })}
         </div>
 
-        {/* Additional Achievements Text */}
+        {/* Impact highlights */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="mt-16 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          style={{
+            background:   '#0c1220',
+            border:       '1px solid rgba(255,255,255,0.06)',
+            borderRadius: 12, padding: '28px 32px',
+          }}
         >
-          <div className="glass p-8 rounded-xl">
-            <h3 className="text-2xl font-bold mb-6 text-center gradient-text">
-              Impact Highlights
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
-              <div className="flex items-start gap-3">
-                <span className="text-primary-400 mt-1">✓</span>
-                <span>Eliminated 30+ hours/week through intelligent automation</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-primary-400 mt-1">✓</span>
-                <span>Built 15+ executive Power BI dashboards</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-primary-400 mt-1">✓</span>
-                <span>Deployed 10+ Python automation scripts</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-primary-400 mt-1">✓</span>
-                <span>Processed 500K+ stock market records</span>
-              </div>
-            </div>
+          <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11,
+            letterSpacing: '0.12em', color: 'rgba(56,189,248,0.6)', marginBottom: 20 }}>
+            {'IMPACT HIGHLIGHTS'}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {highlights.map((h, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.5 + i * 0.08 }}
+                className="flex items-start gap-3"
+              >
+                <span style={{ color: '#34d399', flexShrink: 0, marginTop: 2, fontSize: 14 }}>✓</span>
+                <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 14, color: '#94a3b8', lineHeight: 1.6 }}>
+                  {h}
+                </span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
     </section>
-  );
+  )
 }
-

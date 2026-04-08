@@ -1,135 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
+/* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  --bg:             #030712;
+  --surface:        #0c1220;
+  --surface-2:      #111827;
+  --border:         rgba(255, 255, 255, 0.06);
+  --border-hover:   rgba(56, 189, 248, 0.3);
+  --accent-blue:    #38bdf8;
+  --accent-violet:  #818cf8;
+  --accent-emerald: #34d399;
+  --accent-pink:    #f472b6;
+  --text-primary:   #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
 }
 
+/* ─── Base ───────────────────────────────────────────────────── */
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #030712;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #030712;
+  color: #f8fafc;
+  font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 10px;
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #030712; }
+::-webkit-scrollbar-thumb  {
+  background: linear-gradient(to bottom, #38bdf8, #818cf8);
+  border-radius: 2px;
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2563eb, #7c3aed);
-}
-
-/* Scroll Progress Indicator */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #14b8a6);
-  z-index: 9999;
-  transition: width 0.1s ease-out;
-}
-
-/* Glassmorphism Effect */
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-strong {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Gradient Text */
+/* ─── Gradient Text ──────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #14b8a6);
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #34d399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
 }
 
-/* Animated Background */
-.animated-bg {
-  background: linear-gradient(270deg, #0f172a, #1e1b4b, #0f172a);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+/* ─── Card ───────────────────────────────────────────────────── */
+.card {
+  background: #0c1220;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+/* ─── Layout ─────────────────────────────────────────────────── */
+.section-padding {
+  padding: 96px 0;
+}
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Scroll Progress ────────────────────────────────────────── */
+#scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(to right, #38bdf8, #818cf8, #34d399);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
 }
 
-.animated-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 40% 20%, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
-  animation: float 20s ease-in-out infinite;
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;    transform: scale(1);    }
+  50%       { opacity: 0.35; transform: scale(0.75); }
 }
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
 
-/* Utility Classes */
-.section-padding {
-  @apply py-20 md:py-28 lg:py-32;
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0);  }
+  50%       { transform: translateY(8px); }
 }
+.bounce-slow { animation: bounce-slow 1.6s ease-in-out infinite; }
 
-.container-custom {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+/* ─── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section-padding  { padding: 72px 0; }
+  .container-custom { padding: 0 16px; }
 }
-
-/* Animation Delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-
-/* Hover Effects */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-}
-

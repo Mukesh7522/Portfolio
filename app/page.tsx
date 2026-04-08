@@ -1,35 +1,31 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Experience from '@/components/Experience';
-import Projects from '@/components/Projects';
-import Achievements from '@/components/Achievements';
-import Education from '@/components/Education';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import { useEffect } from 'react'
+import Navbar      from '@/components/Navbar'
+import Hero        from '@/components/Hero'
+import About       from '@/components/About'
+import Skills      from '@/components/Skills'
+import Experience  from '@/components/Experience'
+import Projects    from '@/components/Projects'
+import Achievements from '@/components/Achievements'
+import Education   from '@/components/Education'
+import Contact     from '@/components/Contact'
+import Footer      from '@/components/Footer'
 
 export default function Home() {
   useEffect(() => {
-    // Scroll progress indicator
-    const handleScroll = () => {
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (window.scrollY / windowHeight) * 100;
-      const progressBar = document.getElementById('scroll-progress');
-      if (progressBar) {
-        progressBar.style.width = `${scrolled}%`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const onScroll = () => {
+      const total = document.documentElement.scrollHeight - document.documentElement.clientHeight
+      const pct   = total > 0 ? (window.scrollY / total) * 100 : 0
+      const bar   = document.getElementById('scroll-progress')
+      if (bar) bar.style.width = `${pct}%`
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <main className="relative">
+    <main className="relative" style={{ backgroundColor: '#030712' }}>
       <Navbar />
       <Hero />
       <About />
@@ -41,6 +37,5 @@ export default function Home() {
       <Contact />
       <Footer />
     </main>
-  );
+  )
 }
-
