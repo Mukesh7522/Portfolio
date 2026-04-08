@@ -205,14 +205,7 @@ export default function Projects() {
                 </div>
               ) : null}
 
-              {'company' in p && p.company && (
-                <div style={{
-                  fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
-                  color: '#475569', marginTop: 4,
-                }}>
-                  @ {p.company}
-                </div>
-              )}
+
             </motion.div>
           ))}
         </div>
